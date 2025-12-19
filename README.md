@@ -1,8 +1,8 @@
 FrontEnd Dev:
 
 TechStack:
-Next.js 14(APP Router) - the newest Routing from Next.js
-Original CSS Modules
+1.Next.js 14(APP Router) - the newest Routing from Next.js
+2.Original CSS Modules
 
 Create Next.js Project:
 setting up by "npx create-next-app@latest frontend"
@@ -40,3 +40,20 @@ Designed Communication from Frontend to Backend:
 1.Creating lib folder
 2.creating api.ts - Encapsulation for API client
 3.Checking the state update by Polling(because this is 1-2day project, I want to keep it simple,for a more mature solution, we can just WebSocker here for state updating)
+
+Backend Dev:
+
+Tech Stack:
+1.FastAPI(Python 3.11+)
+2.Database:SQLite
+3.ORM:SQLalchemy
+4.Data validation: Pydantic V2
+5.task list:Python asyncio + APScheduler
+6.CORS handling: FastAPI CORS component
+
+Full WorkFlow:
+
+Stage 1:
+1.User visted ->/Payments/new
+2.frontEnd useEffect triger
+3.API call: GET /api/accounts
