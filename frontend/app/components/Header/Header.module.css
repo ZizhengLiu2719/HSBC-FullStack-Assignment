@@ -1,0 +1,153 @@
+/* Main header container */
+.header {
+    /* Position and size */
+    position: sticky;           /* Stays at top when scrolling */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;             /* Above other content */
+    
+    /* Appearance */
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-gray-200);
+    box-shadow: var(--shadow-sm);
+    
+    /* Spacing */
+    padding: var(--spacing-md) 0;
+  }
+  
+  /* Inner container - limits width and centers content */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    
+    /* Flexbox for horizontal layout */
+    display: flex;
+    align-items: center;          /* Vertically center items */
+    justify-content: space-between; /* Space between left and right */
+  }
+  
+  
+  .brand {
+    /* Make it flexible to take available space */
+    flex-shrink: 0;  /* Don't shrink when space is tight */
+  }
+  
+  .logo {
+    /* Flexbox for icon + text layout */
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    
+    /* Remove link underline */
+    text-decoration: none;
+    color: inherit;
+    
+    /* Add subtle transition */
+    transition: opacity var(--transition-base) ease;
+  }
+  
+  .logo:hover {
+    opacity: 0.8;  /* Slight fade on hover */
+  }
+  
+  .logoIcon {
+    /* Icon size */
+    font-size: var(--font-size-2xl);
+    line-height: 1;
+  }
+  
+  .logoText {
+    /* Text style */
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-gray-900);
+    
+    /* Hide on very small screens */
+    display: inline;
+  }
+  
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+  
+  /* Navigation link (e.g., "Payments") */
+  .navLink {
+    /* Text style */
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--color-gray-600);
+    text-decoration: none;
+    
+    /* Border and shape */
+    border-radius: var(--radius-md);
+    
+    /* Transition */
+    transition: all var(--transition-base) ease;
+  }
+  
+  /* Hover state for nav link */
+  .navLink:hover {
+    color: var(--color-primary);
+    background-color: var(--color-primary-light);
+  }
+  
+  /* Active state (current page) */
+  .navLink.active {
+    color: var(--color-primary);
+    font-weight: 600;
+    background-color: var(--color-primary-light);
+  }
+  
+  /* Navigation button (e.g., "Create Payment") */
+  .navButton {
+    /* Inherits all .btn styles from globals.css */
+    /* We just add component-specific overrides here if needed */
+    
+    /* Add a subtle animation on hover */
+    transition: transform var(--transition-base) ease;
+  }
+  
+  .navButton:hover {
+    transform: translateY(-1px);  /* Lift slightly on hover */
+  }
+  
+  
+  /* Tablet screens */
+  @media (max-width: 768px) {
+    .header {
+      padding: var(--spacing-sm) 0;
+    }
+    
+    .logoText {
+      /* Hide logo text on mobile to save space */
+      display: none;
+    }
+    
+    .nav {
+      gap: var(--spacing-sm);
+    }
+    
+    .navLink {
+      padding: var(--spacing-xs) var(--spacing-sm);
+      font-size: var(--font-size-sm);
+    }
+  }
+  
+  /* Mobile screens */
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 var(--spacing-md);
+    }
+    
+    .navButton {
+      /* Shorten button text on mobile */
+      font-size: var(--font-size-xs);
+      padding: var(--spacing-xs) var(--spacing-sm);
+    }
+  }

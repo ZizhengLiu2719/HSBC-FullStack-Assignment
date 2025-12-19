@@ -1,0 +1,85 @@
+/* Base badge style */
+.badge {
+    /* Layout */
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    
+    /* Size and spacing */
+    padding: 0.25rem 0.625rem;
+    
+    /* Typography */
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    line-height: 1.5;
+    
+    /* Border and shape */
+    border-radius: var(--radius-md);
+    
+    /* Prevent text wrapping */
+    white-space: nowrap;
+  }
+  
+  /* Icon within badge */
+  .icon {
+    font-size: var(--font-size-base);
+    line-height: 1;
+  }
+  
+  /* Text within badge */
+  .text {
+    text-transform: capitalize;  /* "completed" → "Completed" */
+  }
+  
+
+  
+  /* Pending - Yellow (waiting for confirmation) */
+  .warning {
+    background-color: var(--color-warning-light);
+    color: #856404;  /* Dark yellow for readability */
+    border: 1px solid var(--color-warning);
+  }
+  
+  /* Processing - Blue (in progress) */
+  .info {
+    background-color: var(--color-info-light);
+    color: #0c5460;  /* Dark cyan for readability */
+    border: 1px solid var(--color-info);
+  }
+  
+  /* Completed - Green (success) */
+  .success {
+    background-color: var(--color-success-light);
+    color: #155724;  /* Dark green for readability */
+    border: 1px solid var(--color-success);
+  }
+  
+  /* Failed - Red (error) */
+  .danger {
+    background-color: var(--color-danger-light);
+    color: #721c24;  /* Dark red for readability */
+    border: 1px solid var(--color-danger);
+  }
+  
+  /* Default - Gray (unknown status) */
+  .default {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-700);
+    border: 1px solid var(--color-gray-300);
+  }
+  
+
+  
+  /* If you want the ⟳ icon to spin */
+  .info .icon {
+    animation: spin 1.5s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

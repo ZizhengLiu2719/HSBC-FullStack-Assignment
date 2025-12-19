@@ -1,0 +1,189 @@
+/* Main card container */
+.card {
+    /* Use global .card styles as base */
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    
+    /* Add transition for hover effect */
+    transition: all var(--transition-base) ease;
+    
+    /* Add slight shadow */
+    box-shadow: var(--shadow-sm);
+  }
+  
+  /* Hover effect - elevate card */
+  .card:hover {
+    /* Increase shadow to create "lift" effect */
+    box-shadow: var(--shadow-md);
+    
+    /* Move up slightly */
+    transform: translateY(-2px);
+    
+    /* Slightly darker border */
+    border-color: var(--color-gray-300);
+  }
+  
+
+  
+  .header {
+    /* Flexbox: ID on left, badge on right */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* Spacing below header */
+    margin-bottom: var(--spacing-md);
+    
+    /* Bottom border to separate from body */
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+  
+  /* Transaction ID styling */
+  .transactionId {
+    /* Monospace font for IDs (common pattern) */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-gray-700);
+    
+    /* Allow text to wrap if ID is very long */
+    word-break: break-all;
+  }
+  
+
+  
+  .body {
+    /* Spacing */
+    margin-bottom: var(--spacing-md);
+  }
+  
+  /* Amount and recipient row */
+  .amount {
+    /* Large, prominent text for amount */
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-gray-900);
+    
+    /* Flexbox for horizontal layout */
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    
+    /* Allow wrapping on small screens */
+    flex-wrap: wrap;
+    
+    /* Spacing below */
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  /* Arrow between amount and recipient */
+  .arrow {
+    color: var(--color-gray-400);
+    font-size: var(--font-size-lg);
+  }
+  
+  /* Recipient name/ID */
+  .recipient {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    color: var(--color-gray-700);
+  }
+  
+  /* Payment description */
+  .description {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
+    line-height: 1.5;
+    
+    /* Limit to 2 lines, add ellipsis if longer */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+
+  
+  .footer {
+    /* Flexbox: date on left, link on right */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* Top border to separate from body */
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--color-gray-200);
+  }
+  
+  /* Creation date */
+  .date {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-500);
+  }
+  
+  /* View details link */
+  .link {
+    /* Text style */
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-primary);
+    text-decoration: none;
+    
+    /* Add transition */
+    transition: all var(--transition-base) ease;
+  }
+  
+  /* Hover effect for link */
+  .link:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+  }
+  
+  
+  /* Tablet screens */
+  @media (max-width: 768px) {
+    .card {
+      padding: var(--spacing-md);
+    }
+    
+    .amount {
+      font-size: var(--font-size-lg);
+    }
+    
+    .recipient {
+      font-size: var(--font-size-base);
+    }
+    
+    .footer {
+      /* Stack vertically on tablets */
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-sm);
+    }
+  }
+  
+  /* Mobile screens */
+  @media (max-width: 480px) {
+    .header {
+      /* Stack vertically on mobile */
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-xs);
+    }
+    
+    .amount {
+      /* Stack amount and recipient vertically */
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: var(--font-size-base);
+    }
+    
+    .arrow {
+      /* Rotate arrow on mobile (vertical flow) */
+      transform: rotate(90deg);
+    }
+  }
