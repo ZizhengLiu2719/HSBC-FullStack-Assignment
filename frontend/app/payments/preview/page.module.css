@@ -1,0 +1,273 @@
+/* ========================================
+   Payment Preview Page Styles
+   
+   Visual hierarchy:
+   - Prominent "From" and "To" sections
+   - Large amount display
+   - Warning message before action
+   ======================================== */
+
+   .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+  
+  /* Loading state */
+  .loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    gap: var(--spacing-md);
+  }
+  
+  /* Main card */
+  .card {
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    padding: var(--spacing-2xl);
+    border: 1px solid var(--color-gray-200);
+  }
+  
+  /* ========================================
+     Header
+     ======================================== */
+  
+  .header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 2px solid var(--color-gray-200);
+  }
+  
+  .title {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--color-gray-900);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .subtitle {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-600);
+  }
+  
+  /* ========================================
+     Payment Details
+     ======================================== */
+  
+  .details {
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  /* Account section (From/To) */
+  .section {
+    padding: var(--spacing-xl);
+    background: var(--color-gray-50);
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .sectionHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .icon {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .sectionTitle {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-gray-700);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .sectionContent {
+    padding-left: var(--spacing-2xl);
+  }
+  
+  .accountName {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-gray-900);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .accountInfo {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
+    font-family: 'Courier New', monospace;
+  }
+  
+  .accountBalance {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-700);
+    margin-top: var(--spacing-xs);
+    font-weight: 500;
+  }
+  
+  /* Arrow between sections */
+  .arrow {
+    text-align: center;
+    font-size: var(--font-size-3xl);
+    color: var(--color-gray-400);
+    margin: var(--spacing-md) 0;
+  }
+  
+  /* Divider */
+  .divider {
+    height: 2px;
+    background: var(--color-gray-200);
+    margin: var(--spacing-xl) 0;
+  }
+  
+  /* Amount section */
+  .amountSection {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--color-primary-light);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .amountLabel {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-700);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+  }
+  
+  .amountValue {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+  
+  /* Description section */
+  .descriptionSection {
+    padding: var(--spacing-lg);
+    background: var(--color-gray-50);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-gray-200);
+  }
+  
+  .descriptionLabel {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+  }
+  
+  .descriptionValue {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-900);
+    line-height: 1.6;
+  }
+  
+  /* ========================================
+     Warning Message
+     ======================================== */
+  
+  .warning {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: var(--color-warning-light);
+    border: 2px solid var(--color-warning);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .warningIcon {
+    font-size: var(--font-size-2xl);
+    flex-shrink: 0;
+  }
+  
+  .warningText {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-800);
+    line-height: 1.6;
+  }
+  
+  /* ========================================
+     Error Message
+     ======================================== */
+  
+  .error {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: var(--color-danger-light);
+    border: 2px solid var(--color-danger);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .errorIcon {
+    font-size: var(--font-size-2xl);
+    flex-shrink: 0;
+  }
+  
+  .errorText {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-900);
+    font-weight: 500;
+  }
+  
+  /* ========================================
+     Action Buttons
+     ======================================== */
+  
+  .actions {
+    display: flex;
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-xl);
+    border-top: 2px solid var(--color-gray-200);
+  }
+  
+  .actions button {
+    flex: 1;
+  }
+  
+  /* ========================================
+     Responsive Design
+     ======================================== */
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
+    
+    .card {
+      padding: var(--spacing-xl);
+    }
+    
+    .amountValue {
+      font-size: var(--font-size-2xl);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      padding: var(--spacing-lg);
+    }
+    
+    .actions {
+      flex-direction: column;
+    }
+    
+    .arrow {
+      transform: rotate(0deg);
+    }
+  }
