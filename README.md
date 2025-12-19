@@ -53,7 +53,16 @@ Tech Stack:
 
 Full WorkFlow:
 
-Stage 1:
+Stage 1(page loading and account selection):
 1.User visted ->/Payments/new
 2.frontEnd useEffect triger
 3.API call: GET /api/accounts
+4.Backend receive and process:
+FastAPI receive request
+api/accounts.py -> get_accounts()
+AccountService.get_all_accounts()
+SQLAlchemy query: Select \* FROM accounts
+return Json:
+5.frontEnd receive reponse
+6.separete debtor/creditor
+7.rendering drop-down selection box
