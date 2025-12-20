@@ -5,9 +5,9 @@ Request/Response models for Payment endpoints
 """
 
 from datetime import datetime
-from typing import Optional, List
+from typing import Optional, List, Any
 from decimal import Decimal
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 from app.schemas.payment_log import PaymentLogResponse
 from app.schemas.common import PaginationInfo
@@ -98,13 +98,13 @@ class PaymentResponse(BaseModel):
         description="Payee account ID",
         examples=["SUP001"]
     )
-    debtor_name: Optional[str] = Field(
-        None,
+    debtor_name: str = Field(
+        ...,
         description="Payer account name",
         examples=["Main Operating Account"]
     )
-    creditor_name: Optional[str] = Field(
-        None,
+    creditor_name: str = Field(
+        ...,
         description="Payee account name",
         examples=["Office Supplies Ltd."]
     )
@@ -145,6 +145,21 @@ class PaymentResponse(BaseModel):
         description="Error details if status is 'failed'",
         examples=["Insufficient funds at payment gateway"]
     )
+    
+    @model_validator(mode='before')
+    @classmethod
+    def extract_account_names(cls, data: Any) -> Any:
+        """Extract account names from related Account objects"""
+        if isinstance(data, dict):
+            return data
+        
+        # If data is an ORM model, extract account names
+        if hasattr(data, 'debtor_account') and data.debtor_account:
+            data.debtor_name = data.debtor_account.account_name
+        if hasattr(data, 'creditor_account') and data.creditor_account:
+            data.creditor_name = data.creditor_account.account_name
+        
+        return data
     
     class Config:
         from_attributes = True
@@ -191,6 +206,21 @@ class PaymentDetailResponse(BaseModel):
         default_factory=list,
         description="Status change history"
     )
+    
+    @model_validator(mode='before')
+    @classmethod
+    def extract_account_names(cls, data: Any) -> Any:
+        """Extract account names from related Account objects"""
+        if isinstance(data, dict):
+            return data
+        
+        # If data is an ORM model, extract account names
+        if hasattr(data, 'debtor_account') and data.debtor_account:
+            data.debtor_name = data.debtor_account.account_name
+        if hasattr(data, 'creditor_account') and data.creditor_account:
+            data.creditor_name = data.creditor_account.account_name
+        
+        return data
     
     class Config:
         from_attributes = True
