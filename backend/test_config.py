@@ -3,7 +3,7 @@ from app.core.config import settings
 import sys
 import os
 
-# 设置输出编码为 UTF-8
+#UTF-8
 if os.name == 'nt':  # Windows
     import codecs
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
