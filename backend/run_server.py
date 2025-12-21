@@ -8,6 +8,7 @@ Usage:
 """
 
 import uvicorn
+#import settings class from app/core/config.py
 from app.core.config import settings
 
 if __name__ == "__main__":

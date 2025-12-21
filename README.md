@@ -44,25 +44,40 @@ Designed Communication from Frontend to Backend:
 Backend Dev:
 
 Tech Stack:
-1.FastAPI(Python 3.11+)
-2.Database:SQLite
-3.ORM:SQLalchemy
+1.framework: FastAPI 0.119.1
+2.Database: SQLite(async) + SQLAlchemy 2.0 ORM
+3.vaildation: Pydantic v2
 4.Data validation: Pydantic V2
-5.task list:Python asyncio + APScheduler
-6.CORS handling: FastAPI CORS component
+5.asynchronous: Uvicorn
 
 Full WorkFlow:
 
-Stage 1(page loading and account selection):
-1.User visted ->/Payments/new
-2.frontEnd useEffect triger
-3.API call: GET /api/accounts
-4.Backend receive and process:
-FastAPI receive request
-api/accounts.py -> get_accounts()
-AccountService.get_all_accounts()
-SQLAlchemy query: Select \* FROM accounts
-return Json:
-5.frontEnd receive reponse
-6.separete debtor/creditor
-7.rendering drop-down selection box
+Stage 1(start the application):
+1.run_server.py - launch the application
+2.mainly.py - create FastAPI application
+3.lifespan - manager initial database
+4.init_db() - create table structure(accounts,payments,payment_logs)
+5.loading CORS middleware - allow cross-domain access from the frontend 6.
+6.register routing(/api/accounts, /api/payments)
+7.server montior 0.0.0.0:8000
+
+stage 2(get accounts list):
+1.client request
+2.FastAPI router (accounts.py::get_all_accounts)
+3.import get_db() - create AsyncSession
+4.SQLAlchemy: SELECT \* FROM accounts ORDER BY created_at DESC
+5.ORM model: pydantic schema(AccountReponse)
+6.return JSON:
+{
+"success": true,
+"data": [
+{
+"account_id": "ACC001",
+"account_name": "Main Operating Account",
+"account_type": "debtor",
+"balance": 100000.00,
+"currency": "USD"
+},
+...
+]
+}

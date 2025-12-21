@@ -1,5 +1,6 @@
 from typing import List
 from pydantic_settings import BaseSettings, SettingsConfigDict
+#Pydantic Settings class will automatically load enviroment variables, .env file and validate the values.
 
 
 class Settings(BaseSettings):
