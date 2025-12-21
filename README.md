@@ -1,3 +1,16 @@
+How to start the Project?
+1.BackEnd:
+open terminal ->
+cd backend ->
+python run_server.py
+//backend server start!
+2.FrontEnd:
+open another new terminal ->
+cd frontend ->
+npm run dev
+//frontend start!
+//now the whole project start!
+
 FrontEnd Dev:
 
 TechStack:
