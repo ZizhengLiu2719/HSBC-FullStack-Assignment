@@ -4,10 +4,23 @@ Seed Data Script
 Populates database with initial test data.
 
 Usage:
-    python seed_data.py
+    From backend directory:
+        python data/seed_data.py
+    
+    Or from data directory:
+        python seed_data.py
 """
 
 import asyncio
+import sys
+from pathlib import Path
+
+# Add parent directory to Python path to import app modules
+# This allows the script to be run from either backend/ or backend/data/
+current_dir = Path(__file__).parent
+backend_dir = current_dir.parent
+sys.path.insert(0, str(backend_dir))
+
 from app.core.database import AsyncSessionLocal, init_db, drop_db
 from app.models.account import Account
 
@@ -80,8 +93,20 @@ async def seed_accounts():
         print(f"[OK] Created {len(accounts_data)} accounts")
 
 
+async def load_seed_data():
+    """
+    Load seed data into existing database
+    
+    This function can be imported and called by other scripts (like init_db.py)
+    It only seeds data without dropping/recreating tables.
+    """
+    print("\n📦 Loading seed data...")
+    await seed_accounts()
+    print("✅ Seed data loaded successfully!\n")
+
+
 async def main():
-    """Main seed function"""
+    """Main seed function with full reset"""
     
     print("="*60)
     print("Seeding Database")
