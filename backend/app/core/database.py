@@ -22,6 +22,7 @@ engine = create_async_engine(
     settings.DATABASE_URL,
     echo=settings.DEBUG,  # Log SQL in debug mode
     poolclass=NullPool,   # For SQLite compatibility
+    connect_args={"check_same_thread": False},  # Allow SQLite to be used in async context
 )
 
 

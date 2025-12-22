@@ -134,12 +134,15 @@ class PaymentService:
         """
         query = select(Payment).where(Payment.transaction_id == transaction_id)
         
+        # Always load account relationships (needed for response serialization)
+        query = query.options(
+            selectinload(Payment.debtor_account),
+            selectinload(Payment.creditor_account)
+        )
+        
+        # Optionally load logs
         if include_logs:
-            query = query.options(
-                selectinload(Payment.logs),
-                selectinload(Payment.debtor_account),
-                selectinload(Payment.creditor_account)
-            )
+            query = query.options(selectinload(Payment.logs))
         
         result = await db.execute(query)
         return result.scalar_one_or_none()
