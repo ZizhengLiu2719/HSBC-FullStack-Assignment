@@ -8,7 +8,7 @@ Usage:
         python data/seed_data.py
     
     Or from data directory:
-        python seed_data.py
+    python seed_data.py
 """
 
 import asyncio
