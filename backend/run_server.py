@@ -12,12 +12,15 @@ import uvicorn
 from app.core.config import settings
 
 if __name__ == "__main__":
+    # Display localhost instead of 0.0.0.0 for user-friendly URL
+    display_host = "localhost" if settings.HOST == "0.0.0.0" else settings.HOST
+    
     print(f"""
     ============================================================
     Starting {settings.APP_NAME}
     ============================================================
-    Server: http://{settings.HOST}:{settings.PORT}
-    API Docs: http://{settings.HOST}:{settings.PORT}/docs
+    Server: http://{display_host}:{settings.PORT}
+    API Docs: http://{display_host}:{settings.PORT}/docs
     Debug Mode: {settings.DEBUG}
     ============================================================
     """)
