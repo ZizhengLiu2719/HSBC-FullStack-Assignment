@@ -21,10 +21,10 @@ class Settings(BaseSettings):
 
         return [origin.strip() for origin in self.ALLOWED_ORIGINS.split(",")]
     
-    PAYMENT_PENDING_TO_PROCESSING_DELAY: int = 2
+    PAYMENT_PENDING_TO_PROCESSING_DELAY: int = 10    
     PAYMENT_PROCESSING_MIN_DELAY: int = 3
     PAYMENT_PROCESSING_MAX_DELAY: int = 6
-    PAYMENT_SUCCESS_RATE: float = 0.9
+    PAYMENT_SUCCESS_RATE: float = 0.5                
     
     model_config = SettingsConfigDict(
         env_file=".env",           # read from .env file
